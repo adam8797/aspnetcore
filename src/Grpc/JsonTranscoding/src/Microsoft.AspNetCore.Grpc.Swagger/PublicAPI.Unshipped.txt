@@ -1,1 +1,39 @@
 #nullable enable
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerOptions
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerOptions.ExpandLiteralPathSegments.get -> bool
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerOptions.ExpandLiteralPathSegments.set -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerOptions.GrpcSwaggerOptions() -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerOptions.ResolveOpenApiPath.get -> System.Func<Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext!, Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolution?>?
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerOptions.ResolveOpenApiPath.set -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride.RenameParameter(string! from, string! to) -> Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder.Add(string! methodFullName) -> Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder.Add(string! methodFullName, string! path) -> Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder.Add<TService>(string! methodName) -> Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder.Add<TService>(string! methodName, string! path) -> Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder.Add<TService>(System.Linq.Expressions.Expression<System.Action<TService!>!>! methodExpression) -> Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder.Add<TService>(System.Linq.Expressions.Expression<System.Action<TService!>!>! methodExpression, string! path) -> Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverride!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolver
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.DefaultParameters.get -> System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter!>!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.DefaultParameters.init -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.DefaultPath.get -> string!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.DefaultPath.init -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.GrpcSwaggerPathContext() -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.HttpRule.get -> Google.Api.HttpRule!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.HttpRule.init -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.Method.get -> Google.Protobuf.Reflection.MethodDescriptor!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext.Method.init -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter.Field.get -> Google.Protobuf.Reflection.FieldDescriptor!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter.Field.init -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter.Name.get -> string!
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter.Name.init -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolution
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolution.GrpcSwaggerPathResolution(string! path) -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolution.GrpcSwaggerPathResolution(string! path, System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter!>! parameters) -> void
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolution.Parameters.get -> System.Collections.Generic.IReadOnlyList<Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathParameter!>?
+Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolution.Path.get -> string!
+static Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolver.Build(System.Action<Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathOverrideBuilder!>! configure) -> System.Func<Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathContext!, Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerPathResolution?>!
+static Microsoft.Extensions.DependencyInjection.GrpcSwaggerServiceExtensions.AddGrpcSwagger(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Microsoft.AspNetCore.Grpc.Swagger.GrpcSwaggerOptions!>? configureOptions) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!

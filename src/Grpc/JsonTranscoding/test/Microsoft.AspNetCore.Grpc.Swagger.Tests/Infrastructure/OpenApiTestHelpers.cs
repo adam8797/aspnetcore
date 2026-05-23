@@ -1,8 +1,13 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+#nullable enable
+
+using Google.Api;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Grpc.Swagger;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
@@ -13,10 +18,13 @@ namespace Microsoft.AspNetCore.Grpc.Swagger.Tests.Infrastructure;
 
 internal static class OpenApiTestHelpers
 {
-    public static OpenApiDocument GetOpenApiDocument<TService>(ITestOutputHelper testOutputHelper) where TService : class
+    public static OpenApiDocument GetOpenApiDocument(ITestOutputHelper testOutputHelper, params Type[] typeServices)
+        => GetOpenApiDocument(testOutputHelper, configureOptions: null, typeServices);
+
+    public static OpenApiDocument GetOpenApiDocument(ITestOutputHelper testOutputHelper, Action<GrpcSwaggerOptions>? configureOptions, params Type[] typeServices)
     {
         var services = new ServiceCollection();
-        services.AddGrpcSwagger();
+        services.AddGrpcSwagger(configureOptions);
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -34,7 +42,10 @@ internal static class OpenApiTestHelpers
         app.UseRouting();
         app.UseEndpoints(c =>
         {
-            c.MapGrpcService<TService>();
+            foreach (var s in typeServices)
+            {
+                MapGrpcService(c, s);
+            }
         });
 
         var swaggerGenerator = serviceProvider.GetRequiredService<ISwaggerProvider>();
@@ -45,5 +56,16 @@ internal static class OpenApiTestHelpers
         testOutputHelper.WriteLine(outputString.ToString());
 
         return swagger;
+    }
+
+    public static OpenApiDocument GetOpenApiDocument<TService>(ITestOutputHelper testOutputHelper) where TService : class
+    {
+        return GetOpenApiDocument(testOutputHelper, typeof(TService));
+    }
+
+    private static void MapGrpcService(IEndpointRouteBuilder routes, Type grpcService)
+    {
+        var mapMethod = typeof(GrpcEndpointRouteBuilderExtensions).GetMethod(nameof(GrpcEndpointRouteBuilderExtensions.MapGrpcService))!;
+        mapMethod.MakeGenericMethod(grpcService).Invoke(null, [routes]);
     }
 }
