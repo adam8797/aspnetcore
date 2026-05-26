@@ -7,12 +7,7 @@ using Google.Protobuf.Reflection;
 namespace Microsoft.AspNetCore.Grpc.Swagger;
 
 /// <summary>
-/// Configure target passed to
-/// <see cref="GrpcSwaggerPathResolver.Build(System.Action{GrpcSwaggerPathOverrideBuilder})"/>.
-/// Provides three families of <c>Add</c> overloads for registering per-RPC path overrides keyed
-/// by proto fully-qualified name, a strongly-typed service base + method name, or a
-/// strongly-typed method-reference expression. Each family has a path-less variant (rule applies
-/// to the provider's default path) and a with-path variant (rule emits an explicit path template).
+/// Builder object passed to <see cref="GrpcSwaggerPathResolver.Build(System.Action{GrpcSwaggerPathOverrideBuilder})"/>
 /// </summary>
 public sealed class GrpcSwaggerPathOverrideBuilder
 {
@@ -25,8 +20,7 @@ public sealed class GrpcSwaggerPathOverrideBuilder
         => AddCore(methodFullName, path: null);
 
     /// <summary>
-    /// Add an override keyed by the proto fully-qualified method name
-    /// (matched against <see cref="MethodDescriptor.FullName"/>).
+    /// Add an override keyed by the proto fully-qualified method name (matched against <see cref="MethodDescriptor.FullName"/>).
     /// </summary>
     /// <param name="methodFullName">The fully-qualified Protobuf method name, e.g. <c>"package.ServiceName.MethodName"</c> or <c>"ServiceName.MethodName"</c> when the proto has no package.</param>
     /// <param name="path">The explicit OpenAPI path template (e.g. <c>"/v1/things/{thingId}"</c>).</param>
@@ -39,8 +33,7 @@ public sealed class GrpcSwaggerPathOverrideBuilder
         => AddCore(ResolveFullName(typeof(TService), methodName), path: null);
 
     /// <summary>
-    /// Add an override keyed by a gRPC service base type and a method name. The service descriptor
-    /// is resolved from the type's generated static <c>Descriptor</c> property.
+    /// Add an override keyed by a gRPC service base type and a method name. The service descriptor is resolved from the type's generated static <c>Descriptor</c> property.
     /// </summary>
     /// <typeparam name="TService">The generated gRPC service base type (e.g. <c>MyService.MyServiceBase</c>).</typeparam>
     /// <param name="methodName">The method name within <typeparamref name="TService"/>.</param>
